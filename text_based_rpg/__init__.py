@@ -17,3 +17,9 @@ if choice == "y":
     print(f"    2: CREAKY OLD TABLE")
     print(f"    3: DOOR")
     choice = input("Look by?: ")
+    if choice == 1:
+        choice = input(f"You find your OLD CANDLE, it needs to be replaced, but it works...")
+    if choice == 2:
+        choice = input(f"You find you BASKET STICK, you typically use it for carrying your grocreies home, plus it makes you feel like a cool forest witch...")
+    if choice == 3:
+        choice = input(f"You find your OLD CLOAK, it's a hand down from your elder sister, when she went off to war they gave her a uniform and she gave you this...")
