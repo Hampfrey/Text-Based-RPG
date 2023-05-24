@@ -1,6 +1,4 @@
 # Imports
-import scenes 
-import item
 import random
 
 # Character
@@ -8,7 +6,7 @@ class Character:
     def __init__(self, name, lvl):
         self.name = name
         self.lvl = int(lvl)
-        mainInv = Inventory()
+        self.inv = [""]
 
     def __str__(self):
         return f"{self.name}({self.lvl})"
@@ -19,10 +17,3 @@ class Character:
 
     def decrease_level(self):
         self.lvl -= 1
-        print(str(self.lvl))
-
-# Inventory
-class Inventory:
-    def __init__(self)
-        self.slots = ["none"]
-
