@@ -7,6 +7,9 @@ class Character:
         self.name = name
         self.lvl = int(lvl)
         self.inv = []
+        self.health = 10
+        self.defence = 0
+        self.attack = 1
 
     def __str__(self):
         return f"{self.name}({self.lvl})"
@@ -23,16 +26,21 @@ class Character:
         length = len(self.inv)
         i = 0
         while i < length:
-            print("- " + str(self.inv[i]))
+            print(f"    {i}: " + str(self.inv[i]))
             i += 1
+        read = int(input("Look at?: "))
+        if read >= 0 and read < len(self.inv):
+            self.inv[read].analyze()
     
     def in_inventory(self, item):
         length = len(self.inv)
         i = 0
         return_val = False
         while i < length:
-            if item == str(self.name[i]):
+            print(str(self.inv[i]))
+            if item == str(self.inv[i]):
                 return_val = True
+            i += 1
         return return_val
                 
 
@@ -53,3 +61,32 @@ class Item:
     
     def __str__(self):
         return f"{self.name}"
+    
+    def analyze(self):
+        print(f"{self.name}")
+        print(f"- {self.description}")
+        msg = "Undef: "
+        if self.type == 0 or 1:
+            msg = "Attack"
+        if self.type == 2:
+            msg = "Defence"
+        if self.type == 3:
+            msg = "Consume Value"
+        if self.type == 4:
+            msg = "Value"
+        print(f"- {msg}: {self.value}")
+
+class Enemy:
+    def __init__(self, name, health, attack, defence, loot):
+        self.name = name
+        self.health = health
+        self.attack = attack
+        self.defence = defence
+        self.loot = loot
+    
+    def take_hit(self, damage):
+        hit = damage - self.defence
+        if hit < 1:
+            hit = 1
+        self.health -= hit
+

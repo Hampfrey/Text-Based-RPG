@@ -48,7 +48,7 @@ def intro():
                 broadcast(f"There is nothing here...")
             else:
                 broadcast(f"You find your OLD CANDLE, it needs to be replaced, but it works...")
-                main.inv.append(classes.Item("OLD CANDLE", "A flimsy old candle, the wick is nearly burnt through, but it's got a few days left.", 0, 4))
+                main.inv.append(classes.Item("OLD CANDLE", "A flimsy old candle, the wick is nearly burnt through, but it's got a few hours left.", 0, 4))
 
         # Basket
         if choice == "2":
@@ -80,9 +80,6 @@ def intro():
     broadcast(f"\"I have business to attend to first, but I'll meet you there when I can, although don't expect me to look like this, I will be in civil cloth and go by the name of WHITTLEMAN...\"")
     broadcast(f"\"WHITTLEMAN will have my beard, but he'll be shorter and have my elvish ears hidden...\"")
     broadcast(f"\"Now you must leave!...\"")
-
-
-    
 
 # Start Game
 input_name = broadcast(f"A girl is sleeping in her cottage, she starts to stir... What is her name?: ")
