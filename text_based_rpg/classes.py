@@ -8,7 +8,7 @@ class Character:
         self.lvl = int(lvl)
         self.inv = []
         self.health = 10
-        self.defence = 0
+        self.defense = 0
         self.attack = 1
 
     def __str__(self):
@@ -69,7 +69,7 @@ class Item:
         if self.type == 0 or 1:
             msg = "Attack"
         if self.type == 2:
-            msg = "Defence"
+            msg = "defense"
         if self.type == 3:
             msg = "Consume Value"
         if self.type == 4:
@@ -77,15 +77,15 @@ class Item:
         print(f"- {msg}: {self.value}")
 
 class Enemy:
-    def __init__(self, name, health, attack, defence, loot):
+    def __init__(self, name, health, attack, defense, loot):
         self.name = name
         self.health = health
         self.attack = attack
-        self.defence = defence
+        self.defense = defense
         self.loot = loot
     
     def take_hit(self, damage):
-        hit = damage - self.defence
+        hit = damage - self.defense
         if hit < 1:
             hit = 1
         self.health -= hit

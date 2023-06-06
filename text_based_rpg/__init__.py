@@ -18,6 +18,12 @@ def broadcast(msg):
             broadcast_complete = True
     return return_choice
 
+def battle(enemy):
+    broadcast(f"A {enemy.name} approached")
+    broadcast(f"They attack!")
+    broadcast(enemy.give_hit())
+
+
 # Scenes
 def intro():
     choice = broadcast(f"You wake up, it's dark...")
@@ -80,6 +86,11 @@ def intro():
     broadcast(f"\"I have business to attend to first, but I'll meet you there when I can, although don't expect me to look like this, I will be in civil cloth and go by the name of WHITTLEMAN...\"")
     broadcast(f"\"WHITTLEMAN will have my beard, but he'll be shorter and have my elvish ears hidden...\"")
     broadcast(f"\"Now you must leave!...\"")
+    broadcast(f"----------------------------------------")
+
+# Dark Trail
+def dark_trail():
+    broadcast(f"You got moving quickly the trail is dark but you can see in the moonlight...")
 
 # Start Game
 input_name = broadcast(f"A girl is sleeping in her cottage, she starts to stir... What is her name?: ")
