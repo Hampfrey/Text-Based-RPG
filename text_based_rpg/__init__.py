@@ -96,10 +96,11 @@ def intro():
 # Dark Trail
 def dark_trail():
     broadcast(f"You got moving quickly the trail is dark but you can see in the moonlight...")
-    battle(classes.Enemy(5, 2, 0, classes.Item("BONE", "A bone from something, it works as a weapon I guess.", 2, 0)))
+    battle(classes.Enemy("Skeleton", 5, 2, 0, classes.Item("BONE", "A bone from something, it works as a weapon I guess.", 2, 0)))
 
 # Start Game
 input_name = broadcast(f"A girl is sleeping in her cottage, she starts to stir... What is her name?: ")
 main = classes.Character(input_name, 1)
+battle(classes.Enemy("Skeleton", 5, 2, 0, classes.Item("BONE", "A bone from something, it works as a weapon I guess.", 2, 0)))
 intro()
 dark_trail()
