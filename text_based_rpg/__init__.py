@@ -19,9 +19,14 @@ def broadcast(msg):
     return return_choice
 
 def battle(enemy):
-    broadcast(f"A {enemy.name} approached")
-    broadcast(f"They attack!")
-    broadcast(enemy.give_hit())
+    broadcast(f"A {enemy.name} approached!")
+    while enemy.health < 0:
+        broadcast(f"They attack!...")
+        main.health -= main.take_hit(enemy.give_hit)
+        broadcast(f"You attack!...")
+        enemy.health -= enemy.take_hit(main.give_hit)
+    
+        
 
 
 # Scenes
@@ -36,7 +41,7 @@ def intro():
         broadcast(f"Before you can even climb out of bed, the door flies open, an old looking mage cloaked in white angrily wispers to you...")
         broadcast(f"\"Move you Fool! They're coming! Grab what you can you need to move!...\"")
         prompt = "Grab what you can!..."
-    if choice == "y":
+    else:
         print(f"You crawl out of your admittedly uncomfortable bed.")
         prompt = "You might want to find your stuff first though..."
 
@@ -71,7 +76,7 @@ def intro():
             else:
                 broadcast(f"You find your OLD CLOAK, it's a hand down from your elder sister, when she went off to war they gave her a uniform and she gave you this...")
                 main.inv.append(classes.Item("OLD CLOAK", "More or less a piece of leather thrown over your shoulders, it still works though.", 1, 2))
-        if len(main.inv) == 3:
+        if len(main.inv) == 5:
             choice_check = True
     if wizard_mood == "y":
         broadcast(f"You open your door and find a tall mage cloaked in white, they talk in a wisper...")
@@ -91,8 +96,10 @@ def intro():
 # Dark Trail
 def dark_trail():
     broadcast(f"You got moving quickly the trail is dark but you can see in the moonlight...")
+    battle(classes.Enemy(5, 2, 0, classes.Item("BONE", "A bone from something, it works as a weapon I guess.", 2, 0)))
 
 # Start Game
 input_name = broadcast(f"A girl is sleeping in her cottage, she starts to stir... What is her name?: ")
 main = classes.Character(input_name, 1)
 intro()
+dark_trail()

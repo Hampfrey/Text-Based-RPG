@@ -6,10 +6,12 @@ class Character:
     def __init__(self, name, lvl):
         self.name = name
         self.lvl = int(lvl)
-        self.inv = []
+        self.inv = [Item("Hand", "It's your hannd.", 1, 0), Item("Clothes", "Basicly just some rags sewn together.", 0, 2)]
         self.health = 10
         self.defense = 0
-        self.attack = 1
+        self.attack = 0
+        self.selected_weapon = 0
+        self.selected_armor = 1
 
     def __str__(self):
         return f"{self.name}({self.lvl})"
@@ -42,6 +44,23 @@ class Character:
                 return_val = True
             i += 1
         return return_val
+    
+    def give_hit(self):
+        
+        return self.attack + self.inv[self.selected_weapon].value
+    
+    def take_hit(self, damage):
+        damage -= self.defense - self.inv[self.selected_armor].value
+        if damage < 0:
+            print("You take no damage!")
+            return 0
+        else:
+            print(f"You take {damage} damage!")
+            return damage
+    
+
+        
+
                 
 
 # Items
@@ -69,7 +88,7 @@ class Item:
         if self.type == 0 or 1:
             msg = "Attack"
         if self.type == 2:
-            msg = "defense"
+            msg = "Defense"
         if self.type == 3:
             msg = "Consume Value"
         if self.type == 4:
@@ -84,9 +103,15 @@ class Enemy:
         self.defense = defense
         self.loot = loot
     
+    def give_hit(self):
+        return self.attack
+    
     def take_hit(self, damage):
-        hit = damage - self.defense
-        if hit < 1:
-            hit = 1
-        self.health -= hit
+        damage -= self.defense
+        if damage < 0:
+            print("It deals no damage!")
+            return 0
+        else:
+            print(f"It deals {damage} damage!")
+            return damage
 
