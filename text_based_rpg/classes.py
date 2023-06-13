@@ -6,7 +6,7 @@ class Character:
     def __init__(self, name, lvl):
         self.name = name
         self.lvl = int(lvl)
-        self.inv = [Item("Hand", "It's your hannd.", 1, 0), Item("Clothes", "Basicly just some rags sewn together.", 0, 2)]
+        self.inv = [Item("Hand", "It's your hand.", 1, 0), Item("Clothes", "Basicly just some rags sewn together.", 0, 2)]
         self.health = 10
         self.defense = 0
         self.attack = 0

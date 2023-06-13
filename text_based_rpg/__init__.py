@@ -99,8 +99,8 @@ def dark_trail():
     battle(classes.Enemy("Skeleton", 5, 2, 0, classes.Item("BONE", "A bone from something, it works as a weapon I guess.", 2, 0)))
 
 # Start Game
+print("At nearly all points enter \"I\" to open inventory or \"X\" to exit.")
 input_name = broadcast(f"A girl is sleeping in her cottage, she starts to stir... What is her name?: ")
 main = classes.Character(input_name, 1)
-battle(classes.Enemy("Skeleton", 5, 2, 0, classes.Item("BONE", "A bone from something, it works as a weapon I guess.", 2, 0)))
 intro()
-dark_trail()
+
